@@ -10,7 +10,7 @@ import com.assignment.model.FileModel;
 import com.assignment.model.ReturnModel;
 import com.assignment.service.DataService;
 
-@CrossOrigin(origins="*", maxAge=4800, allowCredentials="True")
+@CrossOrigin(origins="*", maxAge=4800, allowCredentials="False")
 @RestController
 public class DataController {
 

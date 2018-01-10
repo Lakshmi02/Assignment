@@ -18,14 +18,24 @@
                     console.log("Errors:", results.errors);
                     obj = '{"filename" : "' + myfile.name +'" , "dataModel" : ' + JSON.stringify(results.data) +'}';
                     console.log("Object to send : " , obj);
-                    console.log("Stringify :", JSON.stringify(obj));
                     var xhr = new XMLHttpRequest();
-                    xhr.withCredentials = true;
+                    xhr.withCredentials = false;
                     xhr.open("POST", "http://localhost:8080/Assignment/addData");
                     xhr.setRequestHeader("content-type", "application/json");
                     xhr.setRequestHeader("cache-control", "no-cache");
                     xhr.setRequestHeader("postman-token", "2d2d4dd7-3075-da8f-75b8-1c7eceeb14e4");
-                    console.log("object : ", obj);
+                    xhr.onreadystatechange = function () {
+                    	  if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    	    console.log("Response Object: " ,xhr.responseText);
+                    	    var responseJSON = JSON.parse(xhr.responseText);
+                    	    console.log("The time taken to process is:", responseJSON.time_to_process);
+                    	    console.log("Number of invalid Data:", responseJSON.invalid_data_count);
+                    	    console.log("Number of total Data:", responseJSON.total_deals_count);
+                    	    document.getElementById("demo").innerHTML = "Time taken to process:  " + responseJSON.time_to_process + " seconds"
+                    	    + "<br/> Number of total deals:  " + responseJSON.total_deals_count
+                    	    + "<br/> Number of invalid Data:  " + responseJSON.invalid_data_count;
+                    	  }
+                    	};
                     xhr.send(obj);
                 }
             });
@@ -41,6 +51,7 @@
     </form>
 
     <button id="submitbutton" type="button">Upload CSV file!</button>
+    <p id="demo"></p>
 
 </body>
 

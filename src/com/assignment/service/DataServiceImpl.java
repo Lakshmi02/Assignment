@@ -107,8 +107,14 @@ public class DataServiceImpl implements DataService {
 	        System.out.println("Seconds take for execution is:"+(endTime-startTime)/1000);
 	        fileDao.updateTimeToProcess(file_id,(endTime-startTime)/1000);
 	        FileImportInfo info = fileDao.getFile(file_id);
+	        if (info.getTime_taken_to_process() == null)
+	        	info.setTime_taken_to_process("0");
+	        if (info.getCount_of_total_deals() == null)
+	        	info.setCount_of_total_deals(new Integer(0));
+	        if(info.getCount_of_InvalidData() == null)
+	        	info.setCount_of_InvalidData(new Integer(0));
+
 	        return new ReturnModel(info.getTime_taken_to_process(),info.getCount_of_total_deals(),info.getCount_of_InvalidData());
-	        
 		}
 		else
 			System.out.println("File Already Exists");
