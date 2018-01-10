@@ -30,6 +30,7 @@
 				<beans:value>com.assignment.bean.ValidData</beans:value>
 				<beans:value>com.assignment.bean.InvalidData</beans:value>
 				<beans:value>com.assignment.bean.FileImportInfo</beans:value>
+				<beans:value>com.assignment.bean.CountOfDealsPerCurrency</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">

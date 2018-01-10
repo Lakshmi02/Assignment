@@ -4,9 +4,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.assignment.bean.CountOfDealsPerCurrency;
 import com.assignment.bean.FileImportInfo;
 import com.assignment.bean.InvalidData;
 import com.assignment.bean.ValidData;
+import com.assignment.dao.CountOfDealsDao;
 import com.assignment.dao.FileDao;
 import com.assignment.dao.ValidDataDao;
 import com.assignment.dao.InvalidDataDao;
@@ -27,6 +29,9 @@ public class DataServiceImpl implements DataService {
 	@Autowired
 	FileDao fileDao;
 	
+	@Autowired
+	CountOfDealsDao countOfDealsDao;
+	
 	@Transactional
 	public Boolean validateFileExists( String filename)
 	{
@@ -45,6 +50,11 @@ public class DataServiceImpl implements DataService {
 			deal.setFile(file);
 			System.out.println("Inside ValidData loop");
 			validDataDao.addDeal(deal);
+			int id = countOfDealsDao.getEntry(dataModel.getFrom_currency_ISO_code());
+			if ( id != 0) 
+				countOfDealsDao.incrementCount(id);
+			else
+				countOfDealsDao.addEntry(new CountOfDealsPerCurrency (dataModel.getFrom_currency_ISO_code(), new Integer(1)));
 		}
 		else
 		{

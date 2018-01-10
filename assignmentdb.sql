@@ -67,3 +67,14 @@ CREATE TABLE `invaliddata` (
   FOREIGN KEY (file_id) REFERENCES fileimportinfo (file_id)
   ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Table structure for table `count_of_deals_per_currency`
+--
+
+CREATE TABLE `count_of_deals_per_currency` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from_currency_ISO_code` varchar(10) NOT NULL,
+  `count_of_deals` int(11) NOT NULL,  
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

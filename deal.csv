@@ -1,0 +1,5 @@
+deal_unique_id,from_currency_ISO_code,to_currency_ISO_code,deal_timestamp,deal_amount
+1,INR,AED,09-01-2018,1000
+2,INR,AED,09-01-2018,2000
+3,USD,INR,09-01-2018,100
+4,USD,AED,09-01-2018,200
