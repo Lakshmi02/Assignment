@@ -22,9 +22,9 @@ public class DataController {
 	  * Input json with address,address_type and user_id is mapped to AddressModel object.
 	  */
 	 @RequestMapping(value = "/addData", method = RequestMethod.POST, headers = "Accept=application/json")
-	 public void addData(@RequestBody FileModel file) {
+	 public ReturnModel addData(@RequestBody FileModel file) {
 		 System.out.println("Inside addData Controller for addData method");
-		 dataService.addData(file);
+		 return dataService.addData(file);
 	 }
 	 
 }

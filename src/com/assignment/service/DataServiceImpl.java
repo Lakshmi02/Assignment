@@ -107,7 +107,7 @@ public class DataServiceImpl implements DataService {
 	        System.out.println("Seconds take for execution is:"+(endTime-startTime)/1000);
 	        fileDao.updateTimeToProcess(file_id,(endTime-startTime)/1000);
 	        FileImportInfo info = fileDao.getFile(file_id);
-	        return new ReturnModel(info.getTime_taken_to_process(), info.getCount_of_InvalidData(),info.getCount_of_total_deals());
+	        return new ReturnModel(info.getTime_taken_to_process(),info.getCount_of_total_deals(),info.getCount_of_InvalidData());
 	        
 		}
 		else

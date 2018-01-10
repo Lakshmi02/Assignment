@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `fileimportinfo` (
   `file_id` int(10) NOT NULL AUTO_INCREMENT,
   `filename` varchar(30) NOT NULL,
-  `time_taken_to_process` varchar(10) NOT NULL DEFAULT '0',
-  `count_of_InvalidData` int(10) NOT NULL DEFAULT '0',
-  `count_of_total_deals` int(10) NOT NULL DEFAULT '0',
+  `time_taken_to_process` varchar(10) NULL DEFAULT '0',
+  `count_of_InvalidData` int(10) NULL DEFAULT '0',
+  `count_of_total_deals` int(10) NULL DEFAULT '0',
    PRIMARY KEY (file_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
