@@ -14,6 +14,7 @@ import com.assignment.dao.ValidDataDao;
 import com.assignment.dao.InvalidDataDao;
 import com.assignment.model.DataModel;
 import com.assignment.model.FileModel;
+import com.assignment.model.ReturnModel;
 
 
 
@@ -80,11 +81,12 @@ public class DataServiceImpl implements DataService {
 			System.out.println("After Updating Count");
 		}
 		
+		fileDao.updateTotalDataCount(file.getFile_id());
 	}
 	
 	@Override
 	@Transactional
-	public void addData(FileModel file) {
+	public ReturnModel addData(FileModel file) {
 		// TODO Auto-generated method stub
 		System.out.println("Inside Add Data Service class");
         long startTime = System.currentTimeMillis();
@@ -104,9 +106,13 @@ public class DataServiceImpl implements DataService {
 	        long endTime = System.currentTimeMillis();
 	        System.out.println("Seconds take for execution is:"+(endTime-startTime)/1000);
 	        fileDao.updateTimeToProcess(file_id,(endTime-startTime)/1000);
+	        FileImportInfo info = fileDao.getFile(file_id);
+	        return new ReturnModel(info.getTime_taken_to_process(), info.getCount_of_InvalidData(),info.getCount_of_total_deals());
+	        
 		}
 		else
 			System.out.println("File Already Exists");
+		return null;
 		
 	}
 

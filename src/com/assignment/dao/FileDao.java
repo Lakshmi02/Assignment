@@ -12,5 +12,7 @@ public interface FileDao {
 	
 	public void updateInvalidDataCount(int file_id);
 	
+	public void updateTotalDataCount(int file_id);
+	
 	public void updateTimeToProcess(int file_id, Long time);
 }

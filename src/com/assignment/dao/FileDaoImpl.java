@@ -63,6 +63,18 @@ public class FileDaoImpl implements FileDao {
 	}
 	
 	@Override
+	public void updateTotalDataCount(int file_id) {
+		Session session = sessionFactory.getCurrentSession();
+		System.out.println("Before File Update");
+		FileImportInfo file = (FileImportInfo) session.load(FileImportInfo.class, new Integer(file_id));
+		System.out.println("The new count is" + file.getCount_of_total_deals() + 1 );
+		if(file.getCount_of_total_deals() == null)
+		file.setCount_of_total_deals(new Integer(0));
+		file.setCount_of_total_deals(file.getCount_of_total_deals() + 1 );
+		session.update(file);
+	}
+	
+	@Override
 	public void updateTimeToProcess(int file_id, Long time) {
 		Session session = sessionFactory.getCurrentSession();
 		System.out.println("Before File Update");

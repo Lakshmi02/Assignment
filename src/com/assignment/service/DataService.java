@@ -1,9 +1,10 @@
 package com.assignment.service;
 
 import com.assignment.model.FileModel;
+import com.assignment.model.ReturnModel;
 
 public interface DataService {
 
-public abstract void addData(FileModel file);
+public abstract ReturnModel addData(FileModel file);
 
 }

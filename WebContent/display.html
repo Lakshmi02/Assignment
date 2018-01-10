@@ -1,0 +1,47 @@
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/PapaParse-4.3.2/papaparse.min.js"></script>
+<meta charset="utf-8"/>
+    <script>
+	var obj = "";
+    $(document).ready(function(){
+        $("#submitbutton").click(function(){
+            var myfile = $("#csvfile")[0].files[0];
+            var json = Papa.parse(myfile, 
+                {
+                header: true, 
+                skipEmptyLines: true,
+                complete: function(results) {
+                    console.log("Dataframe:", JSON.stringify(results.data));
+                    console.log("Column names:", results.meta.fields);
+                    console.log("Errors:", results.errors);
+                    obj = '{"filename" : "' + myfile.name +'" , "dataModel" : ' + JSON.stringify(results.data) +'}';
+                    console.log("Object to send : " , obj);
+                    console.log("Stringify :", JSON.stringify(obj));
+                    var xhr = new XMLHttpRequest();
+                    xhr.withCredentials = true;
+                    xhr.open("POST", "http://localhost:8080/Assignment/addData");
+                    xhr.setRequestHeader("content-type", "application/json");
+                    xhr.setRequestHeader("cache-control", "no-cache");
+                    xhr.setRequestHeader("postman-token", "2d2d4dd7-3075-da8f-75b8-1c7eceeb14e4");
+                    console.log("object : ", obj);
+                    xhr.send(obj);
+                }
+            });
+        })
+    })
+    </script>
+
+</head>
+
+<body>
+    <form name="foo" method="post" enctype="multipart/form-data">
+        <input id="csvfile" type="file" value="i">
+    </form>
+
+    <button id="submitbutton" type="button">Upload CSV file!</button>
+
+</body>
+
+</html>

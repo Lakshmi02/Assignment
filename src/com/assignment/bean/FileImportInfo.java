@@ -35,6 +35,9 @@ public class FileImportInfo {
 	@Column( name = "count_of_InvalidData")
 	private Integer count_of_InvalidData;
 
+	@Column ( name = "count_of_total_deals")
+	private Integer count_of_total_deals;
+	
 	 @JsonIgnore
 	 @OneToMany(cascade=CascadeType.ALL, mappedBy="file", fetch = FetchType.EAGER)
 	 private List<ValidData> validData = new ArrayList<ValidData>(0);
@@ -49,12 +52,13 @@ public class FileImportInfo {
 	}
 
 	public FileImportInfo(Integer file_id, String filename, String time_taken_to_process,
-			Integer count_of_InvalidData) {
+			Integer count_of_InvalidData, Integer count_of_total_deals) {
 		super();
 		this.file_id = file_id;
 		this.filename = filename;
 		this.time_taken_to_process = time_taken_to_process;
 		this.count_of_InvalidData = count_of_InvalidData;
+		this.count_of_total_deals = count_of_total_deals;
 	}
 
 	public Integer getFile_id() {
@@ -88,5 +92,15 @@ public class FileImportInfo {
 	public void setCount_of_InvalidData(Integer count_of_InvalidData) {
 		this.count_of_InvalidData = count_of_InvalidData;
 	}
+
+	public Integer getCount_of_total_deals() {
+		return count_of_total_deals;
+	}
+
+	public void setCount_of_total_deals(Integer count_of_total_deals) {
+		this.count_of_total_deals = count_of_total_deals;
+	}
+	
+	
 	
 }
