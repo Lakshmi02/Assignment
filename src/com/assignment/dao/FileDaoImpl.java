@@ -49,7 +49,11 @@ public class FileDaoImpl implements FileDao {
 		return file;
 	}
 	 
-
+/*
+ * (non-Javadoc)
+ * @see com.assignment.dao.FileDao#updateInvalidDataCount(int)
+ * Method to update the no. of invalid deals present in the file.
+ */
 	@Override
 	public void updateInvalidDataCount(int file_id) {
 		Session session = sessionFactory.getCurrentSession();
@@ -62,6 +66,11 @@ public class FileDaoImpl implements FileDao {
 		session.update(file);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see com.assignment.dao.FileDao#updateTotalDataCount(int)
+	 * Method to update the no. of total deals present in the file.
+	 */
 	@Override
 	public void updateTotalDataCount(int file_id) {
 		Session session = sessionFactory.getCurrentSession();
@@ -73,6 +82,12 @@ public class FileDaoImpl implements FileDao {
 		file.setCount_of_total_deals(file.getCount_of_total_deals() + 1 );
 		session.update(file);
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.assignment.dao.FileDao#updateTimeToProcess(int, java.lang.Long)
+	 * Method to update the time taken to process and store the content of file to database.
+	 */
 	
 	@Override
 	public void updateTimeToProcess(int file_id, Long time) {

@@ -16,7 +16,11 @@ public class InvalidDataDaoImpl implements InvalidDataDao {
 	 public void setSessionFactory(SessionFactory sf) {
 	  this.sessionFactory = sf;
 	 }
-	 
+	/*
+	 *  (non-Javadoc)
+	 * @see com.assignment.dao.InvalidDataDao#addDeal(com.assignment.bean.InvalidData)
+	 * Insert invalid data object into database
+	 */
 	@Override
 	public void addDeal(InvalidData data) {
 		// TODO Auto-generated method stub

@@ -17,14 +17,24 @@ public class CountOfDealsDaoImpl implements CountOfDealsDao {
 	 public void setSessionFactory(SessionFactory sf) {
 	  this.sessionFactory = sf;
 	 }
-	 
+	
+	 /*
+	  * (non-Javadoc)
+	  * @see com.assignment.dao.CountOfDealsDao#addEntry(com.assignment.bean.CountOfDealsPerCurrency)
+	  * Method to make entry into Count_of_deals_currency table accepting a CountOfDealsPerCurrency object as input.
+	  */
 	@Override
 	public void addEntry(CountOfDealsPerCurrency c) {
-		  System.out.println("inside addEntry of CountOfDealsPerCurrency dao");
+		  System.out.println("Inside addEntry of CountOfDealsPerCurrency dao");
 		  Session session = this.sessionFactory.getCurrentSession();
 		  session.persist(c);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.assignment.dao.CountOfDealsDao#incrementCount(int)
+	 * Method to increase the count of deals based on fromCurrencyISOcode.
+	 */
 	@Override
 	public void incrementCount(int id) {
 		Session session = sessionFactory.getCurrentSession();

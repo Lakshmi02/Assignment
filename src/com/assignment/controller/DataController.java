@@ -18,8 +18,8 @@ public class DataController {
 	DataService dataService;
 	
 	 /*
-	  * Service to add Address for a specific user.
-	  * Input json with address,address_type and user_id is mapped to AddressModel object.
+	  * Service to add Data from a csv file.
+	  * Input json mapped to FileModel object.
 	  */
 	 @RequestMapping(value = "/addData", method = RequestMethod.POST, headers = "Accept=application/json")
 	 public ReturnModel addData(@RequestBody FileModel file) {

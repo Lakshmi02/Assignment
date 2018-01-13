@@ -2,6 +2,9 @@ package com.assignment.model;
 
 import java.util.List;
 
+/*
+ * Class to which the users request json data is mapped to.
+ */
 public class FileModel {
 
 	private String filename;

@@ -1,5 +1,8 @@
 package com.assignment.model;
 
+/*
+ * Class from which response object to user is mapped to.
+ */
 public class ReturnModel {
 
 	private String time_to_process;

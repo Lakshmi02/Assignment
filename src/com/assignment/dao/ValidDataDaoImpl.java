@@ -17,7 +17,11 @@ public class ValidDataDaoImpl implements ValidDataDao {
 	 public void setSessionFactory(SessionFactory sf) {
 	  this.sessionFactory = sf;
 	 }
-	 
+	/*
+	 *  (non-Javadoc)
+	 * @see com.assignment.dao.ValidDataDao#addDeal(com.assignment.bean.ValidData)
+	 * Method to insert valid data into database.
+	 */
 	@Override
 	public void addDeal(ValidData data) {
 		// TODO Auto-generated method stub
